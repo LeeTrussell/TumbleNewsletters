@@ -47,7 +47,7 @@ require('../library/pagination.php');
   if($GLOBALS['login']->isLoggedIn())
   {
      $GLOBALS['menu']->addMenuItem('mailing-list','./mailing_list.php','Mailing Lists');
-     $GLOBALS['menu']->addMenuItem('html-emails','./newsletters.php','Newsletters');
+     $GLOBALS['menu']->addMenuItem('html-emails','./newsletters.php','Templates');
      $GLOBALS['menu']->addMenuItem('send-emails','./sendmail.php','Send Mail');
      $GLOBALS['menu']->addMenuItem('subscribers','./users.php', 'Subscribers');
      $GLOBALS['menu']->addMenuItem('Settings','./settings.php','Settings');

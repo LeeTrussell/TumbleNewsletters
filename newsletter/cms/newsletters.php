@@ -11,7 +11,7 @@
   if($delete)
   {
      $GLOBALS['database']->database_delete('newsletter_newsletters','newsletter_id='.$delete);
-     $GLOBALS['messages']->success('Newsletter Deleted.');
+     $GLOBALS['messages']->success('Template Deleted.');
      $GLOBALS['redirect']->redirect_to('./newsletters.php');
   
   }

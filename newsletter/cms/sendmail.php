@@ -5,7 +5,7 @@
   $arrReplace = array();
 
   $sendMailTemplate = new template('./templates/send_mail.html');
-  
+  $objWysiwig = new wysiwig('../ckeditor/');
   $cancel = $GLOBALS['param']->Integer('delete',0);
   
   if($cancel)
@@ -26,7 +26,7 @@
   
   if($GLOBALS['database']->database_hasrows($rstNewsletters))
   {
-     $strSelect = '<select name = "mail_newsletter">';
+     $strSelect = '<select name = "mail_newsletter" id = "mail_newsletter" class = "noblock">';
      while($arrNewsletter = $GLOBALS['database']->database_fetch($rstNewsletters))
      {
         $strSelect .= '<option value = "'.$arrNewsletter['newsletter_id'].'">'.$arrNewsletter['newsletter_title'].'</option>';  
@@ -58,6 +58,7 @@
       $arrMailingCampaign['mail_campaign'] = $GLOBALS['param']->String('mail_campaign','');
       $arrMailingCampaign['mail_newsletter'] = $GLOBALS['param']->Integer('mail_newsletter',0);
       $arrMailingCampaign['mail_to_address'] = $GLOBALS['param']->String('mail_to_address','');
+      $arrMailingCampaign['mail_content'] = $GLOBALS['param']->String('mail_content','');
       $arrSendTo = array();
       $arrUsersToSendTo = array();
       for($i = 0; $i < count($_POST['lists']); $i++)
@@ -139,6 +140,8 @@
   
   $arrReplace['form_errors'] = $GLOBALS['messages']->clearMessages();
   $sendMailTemplate->replacevars($arrReplace);
-  $indexTemplate->replacevars(array('content'=>$sendMailTemplate->returnTemplate(),'menu'=>$GLOBALS['menu']->drawMenu('send-emails')));
+  
+  $indexTemplate->replacevars(array('content'=>$sendMailTemplate->returnTemplate()));
+  $indexTemplate->replacevars(array( 'ckeditor_head'=>$objWysiwig->AddHeader(),'WYSIWYG'=>$objWysiwig->addWysiwig('','mail_content','mail_content','./style.css'),'menu'=>$GLOBALS['menu']->drawMenu('send-emails')));
   echo $indexTemplate->returnTemplate();
 ?>

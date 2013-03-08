@@ -7,6 +7,36 @@
   $mailingListTemplate = new template('./templates/users.html');
   
   $delete = $GLOBALS['param']->Integer('delete',0);
+  $download = $GLOBALS['param']->Integer('download',0);
+  
+
+  
+          if($download)
+          {
+             $strQuery = 'SELECT * FROM newsletter_users_lists LEFT JOIN newsletter_subscribers ON lists_user_id = subscribe_id where lists_list_id = ' . $download;
+             $rstUsers = $GLOBALS['database']->database_query($strQuery);
+             
+             $strList = '';
+             if($GLOBALS['database']->database_hasrows($rstUsers))
+             {
+                while($arrUser = $GLOBALS['database']->database_fetch($rstUsers))
+                {
+                    $strList .= $arrUser['subscribe_email'].",\n";
+                
+
+                }
+header("Content-type: application/octet-stream");  
+header("Content-Disposition: attachment; filename=exportevent.csv");  
+header("Pragma: no-cache");  
+header("Expires: 0");  
+                echo $strList;
+                exit();
+             } 
+          
+          
+          }
+  
+  
   
   if($delete)
   {
@@ -53,15 +83,20 @@
      
   }
   
-  $strQuery = 'SELECT * FROM newsletter_lists';
+  $strQuery = 'SELECT * FROM newsletter_lists ORDER BY list_delete asc';
   $rstLists = $GLOBALS['database']->database_query($strQuery);
-   $filter = $GLOBALS['param']->Integer('filter',0);
+   
+   $strQuery = 'SELECT * FROM newsletter_lists where list_delete = 0';
+   $rstNoDel = $GLOBALS['database']->database_query($strQuery);
+   $arrNoDel = $GLOBALS['database']->database_fetch($rstNoDel);
+   
+   $filter = $GLOBALS['param']->Integer('filter',$arrNoDel['list_id']);
   if($GLOBALS['database']->database_hasrows($rstLists))
   {
         
         
         $strSelect = '<select id="lists" class="multiselect" multiple="multiple" name="lists[]">';
-        $strFilter = '<select id = "filter" name = "filter"><option value = "0">All</option>';
+        $strFilter = '<select id = "filter" name = "filter">';
         while($arrList = $GLOBALS['database']->database_fetch($rstLists))
         {
             $strSelect .= '<option value = "'.$arrList['list_id'].'">'.$arrList['list_name'].'</option>';
@@ -108,7 +143,7 @@
   }
   $arrReplace['LIST_OF_USERS']  = $objPagi->returnTemplatedData('./templates/subscriber_item.html', $arrProcessedData);
   $arrReplace['pagination'] = $objPagi->getPaginationNaviBar();
-  
+  $arrReplace['filter'] = $filter;
   
   
   $mailingListTemplate->replacevars($arrReplace);

@@ -25,8 +25,7 @@
                               
                               					// Do not load the default Styles configuration.
                               					stylesSet: [],
-                              					filebrowserBrowseUrl : \'/browser/browse.php\',
-                                        filebrowserUploadUrl : \'upload.php\'
+                              					filebrowserUploadUrl : \'upload.php\'
 
                           
                           

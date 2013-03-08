@@ -19,7 +19,7 @@
      
      
 $mail             = new PHPMailer();
-$body = htmlspecialchars_decode($arrSend['newsletter_content']);
+$body = htmlspecialchars_decode($arrSend['mail_content']);
 
 $mail->IsSMTP(); // telling the class to use SMTP
 $mail->Host       = $arrSettings['smtp_host']; // SMTP server
@@ -32,18 +32,18 @@ $mail->Port       = $arrSettings['smtp_port'];                    // set the SMT
 $mail->Username   = $arrSettings['smtp_username']; // SMTP account username
 $mail->Password   = htmlspecialchars_decode($arrSettings['smtp_password']);        // SMTP account password
 
-$mail->SetFrom($arrSettings['smtp_username'], $arrSettings['smtp_from']);
+$mail->SetFrom($arrSettings['smtp_username'], htmlspecialchars_decode($arrSettings['smtp_from'],ENT_QUOTES));
 
-$mail->AddReplyTo($arrSettings['smtp_username'], $arrSettings['smtp_from']);
+$mail->AddReplyTo($arrSettings['smtp_username'], htmlspecialchars_decode($arrSettings['smtp_from'], ENT_QUOTES));
 
-$mail->Subject    = $arrSend['mail_campaign'];
+$mail->Subject    = htmlspecialchars_decode($arrSend['mail_campaign'],ENT_QUOTES);
 
 $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 $current_folder = dirname($_SERVER['PHP_SELF']);
 $mail->MsgHTML('<html><head><base href = "http://'.$_SERVER['HTTP_HOST'].''.$current_folder.'" /><link rel="stylesheet" type="text/css" href="./style.css"></head><body>'.$body.'<div class = "unsubscribe"><a href = "./'.$current_folder.'/../unsubscribe.php?email='.$arrSend['subscribe_email'].'">Please click this link to unsubscribe</a></div></body></html>');
 
 $address = $arrSend['subscribe_email'];
-$mail->AddAddress($address, $arrSend['mail_to_address']);
+$mail->AddAddress($address, htmlspecialchars_decode($arrSend['mail_to_address'],ENT_QUOTES));
 
 $mail->Send();
 $GLOBALS['database']->database_delete('newsletter_to_send','send_id='.$arrSend['send_id']);

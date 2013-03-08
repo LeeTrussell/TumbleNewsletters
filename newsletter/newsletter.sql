@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2013 at 12:25 AM
+-- Generation Time: Mar 08, 2013 at 04:29 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `newsletter_lists` (
 --
 
 INSERT INTO `newsletter_lists` (`list_id`, `list_name`, `list_description`, `list_created`, `list_delete`) VALUES
-(1, 'Important People', 'A list of reviewers.', '2013-02-27 09:41:47', 1),
+(1, 'Reviewers', 'A list of reviewers.', '2013-02-27 09:41:47', 1),
 (3, 'All', '', '2013-03-07 22:00:36', 0),
-(6, 'Friends', '', '2013-03-07 22:25:01', 1);
+(6, 'Friends', 'Friends and family', '2013-03-07 22:25:01', 1);
 
 -- --------------------------------------------------------
 
@@ -80,22 +80,24 @@ CREATE TABLE IF NOT EXISTS `newsletter_mailing_campaigns` (
   `mail_created` datetime NOT NULL,
   `mail_sendto_count` int(11) NOT NULL,
   `mail_to_address` varchar(1000) NOT NULL,
+  `mail_content` longtext NOT NULL,
   PRIMARY KEY (`mail_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `newsletter_mailing_campaigns`
 --
 
-INSERT INTO `newsletter_mailing_campaigns` (`mail_id`, `mail_campaign`, `mail_newsletter`, `mail_created`, `mail_sendto_count`, `mail_to_address`) VALUES
-(2, 'A test of the Mail Campaign', 1, '2013-02-27 19:34:41', 1, ''),
-(5, 'testing', 1, '2013-03-07 20:39:59', 1, ''),
-(6, 'Hi, There guys', 1, '2013-03-07 21:39:12', 1, 'Switchblade subscribers'),
-(7, 'Hi There', 4, '2013-03-07 22:59:14', 2, 'Helges Fans'),
-(8, 'This should be the final test', 1, '2013-03-07 23:03:48', 2, 'Helge'),
-(9, 'Deffo the final one', 1, '2013-03-07 23:07:44', 2, 'People'),
-(10, 'Deffo, Deffo', 6, '2013-03-07 23:09:46', 2, 'p'),
-(11, 'dfgdfgf', 1, '2013-03-07 23:11:32', 2, 'Helge');
+INSERT INTO `newsletter_mailing_campaigns` (`mail_id`, `mail_campaign`, `mail_newsletter`, `mail_created`, `mail_sendto_count`, `mail_to_address`, `mail_content`) VALUES
+(13, 'Reviewers Update 1', 11, '2013-03-08 09:23:32', 2, 'helge.sverre@gmail.com', '&lt;p&gt;just a test&lt;/p&gt;\r\n'),
+(14, 'Testing For Helge', 11, '2013-03-08 09:37:47', 2, 'Switchblade Subscribers', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(15, 'Fans of Switchblade', 11, '2013-03-08 09:41:05', 2, 'Fans Of Switchblade', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(16, 'dgfdg', 11, '2013-03-08 09:43:11', 2, 'dfgddg', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(17, 'dfgdg', 11, '2013-03-08 09:45:16', 2, 'dgg', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(18, 'Another Test of the Mailing System', 11, '2013-03-08 09:47:59', 2, 'Helge&#039;s Fans', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(19, 'Should not have html entities', 11, '2013-03-08 09:50:29', 2, 'Helge&#039;s Fans', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(20, 'Testing', 11, '2013-03-08 09:52:23', 2, 'Helge&#039;s Switchblade Subscribers', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n'),
+(21, 'They Should Be Gone Now', 11, '2013-03-08 09:56:09', 2, 'Helge&#039;s Switchblade subscribers', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n');
 
 -- --------------------------------------------------------
 
@@ -110,21 +112,14 @@ CREATE TABLE IF NOT EXISTS `newsletter_newsletters` (
   `newsletter_content` text NOT NULL,
   `newsletter_created` datetime NOT NULL,
   PRIMARY KEY (`newsletter_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `newsletter_newsletters`
 --
 
 INSERT INTO `newsletter_newsletters` (`newsletter_id`, `newsletter_title`, `newsletter_description`, `newsletter_content`, `newsletter_created`) VALUES
-(1, 'Testing', 'Testing', '&lt;p style=&quot;text-align: left;&quot;&gt;Testing&lt;img alt=&quot;&quot; src=&quot;/newsletter/cms/./ckeditor_images/image_512e1aa04cb88.png&quot; style=&quot;width: 694px; height: 674px;&quot; /&gt;&lt;/p&gt;\r\n', '2013-02-27 14:22:54'),
-(4, 'getre', 'tetee', '&lt;p&gt;eterteetet&lt;/p&gt;\r\n', '2013-03-07 20:08:35'),
-(5, 'eweww', 'ewewrewrewr', '&lt;p&gt;ttretertert&lt;/p&gt;\r\n', '2013-03-07 20:09:51'),
-(6, 'uyyuit', 'tyuuu', '&lt;p&gt;utu&lt;/p&gt;\r\n', '2013-03-07 20:10:55'),
-(7, 'tujyttr', 'ertrert', '&lt;p&gt;ettert&lt;/p&gt;\r\n', '2013-03-07 20:12:03'),
-(8, 'gsg', 'ewtewt', '&lt;p&gt;eteteteret&lt;/p&gt;\r\n', '2013-03-07 20:13:37'),
-(9, 'ssfdsdf', 'sdfsdfsdfsf', '&lt;p&gt;sdfdsdfsfd&lt;/p&gt;\r\n', '2013-03-07 20:15:19'),
-(10, 'etrtet', 'etet', '&lt;p&gt;rtet&lt;/p&gt;\r\n', '2013-03-07 20:15:52');
+(11, 'Switchblade Version x.x Released', 'This is a template that will be used when new versions are released', '&lt;h2 style=&quot;text-align: left;&quot;&gt;Helge&amp;#39;s Switchblade x.x Released&amp;nbsp;&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;Changelog xx.xx.xx&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;Change 1&amp;nbsp;&lt;img alt=&quot;&quot; src=&quot;http://switchblade.helgesverre.com/images/slides/logo.png&quot; style=&quot;width: 392px; height: 274px; float: right;&quot; /&gt;&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;change 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 1&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;bug 2&lt;/li&gt;\r\n	&lt;li style=&quot;text-align: left;&quot;&gt;minor bug fix 1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: left;&quot;&gt;You can download the newest version on the main website by click &amp;quot;Download for FREE&amp;quot; or by clicking &lt;a href=&quot;http://switchblade.helgesverre.com/files/xxxx.exe&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;\r\n', '2013-03-08 09:16:48');
 
 -- --------------------------------------------------------
 
@@ -137,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `newsletter_send_lists` (
   `sending_list` int(11) NOT NULL,
   `sending_campaign` int(11) NOT NULL,
   PRIMARY KEY (`sending_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `newsletter_send_lists`
@@ -148,14 +143,15 @@ INSERT INTO `newsletter_send_lists` (`sending_id`, `sending_list`, `sending_camp
 (2, 2, 0),
 (3, 1, 0),
 (4, 2, 0),
-(7, 1, 5),
-(8, 2, 5),
-(9, 1, 6),
-(10, 3, 7),
-(11, 3, 8),
-(12, 3, 9),
-(13, 3, 10),
-(14, 3, 11);
+(16, 1, 13),
+(17, 3, 14),
+(18, 3, 15),
+(19, 3, 16),
+(20, 3, 17),
+(21, 3, 18),
+(22, 3, 19),
+(23, 3, 20),
+(24, 3, 21);
 
 -- --------------------------------------------------------
 
@@ -178,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `newsletter_settings` (
 --
 
 INSERT INTO `newsletter_settings` (`settings_id`, `smtp_host`, `smtp_port`, `smtp_username`, `smtp_password`, `smtp_from`) VALUES
-(1, '', 0, '', '', '');
+(1, 'ssl://smtp.gmail.com', 465, 'ltumbleweed2@gmail.com', '', 'Helge&#039;s Switchblade');
 
 -- --------------------------------------------------------
 
@@ -191,14 +187,16 @@ CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
   `subscribe_email` varchar(255) NOT NULL,
   `subscribe_created` datetime NOT NULL,
   PRIMARY KEY (`subscribe_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `newsletter_subscribers`
 --
 
 INSERT INTO `newsletter_subscribers` (`subscribe_id`, `subscribe_email`, `subscribe_created`) VALUES
-(4, 'ltumbleweed@yahoo.co.uk', '2013-03-07 23:22:37');
+(4, 'ltumbleweed@yahoo.co.uk', '2013-03-07 23:22:37'),
+(5, 'helge.sverre@gmail.com', '2013-03-08 09:20:04'),
+(6, 'gunstein@bjornevoll.no', '2013-03-08 11:02:32');
 
 -- --------------------------------------------------------
 
@@ -224,14 +222,19 @@ CREATE TABLE IF NOT EXISTS `newsletter_users_lists` (
   `lists_user_id` int(11) NOT NULL,
   `lists_list_id` int(11) NOT NULL,
   PRIMARY KEY (`lists_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `newsletter_users_lists`
 --
 
 INSERT INTO `newsletter_users_lists` (`lists_id`, `lists_user_id`, `lists_list_id`) VALUES
-(5, 4, 3);
+(5, 4, 3),
+(7, 5, 3),
+(11, 4, 1),
+(12, 5, 1),
+(13, 5, 6),
+(14, 6, 6);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

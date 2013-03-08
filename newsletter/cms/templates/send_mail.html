@@ -12,9 +12,15 @@
 
 <input type = "text" name = "mail_to_address" value = "" />
 
-<label for = "mail_newsletter">Newsletter</label>
+<label for = "mail_newsletter">Template</label>
 
 <!--[SELECT_BOX_NEWSLETTER]-->
+
+<input type = "button" name = "importTemplate" id = "importTemplate" class = "noblock" value = "Import Template" onclick = "return confirm('Any works you done to the newsletter will be lost, are you sure you wish to proceed?');" />
+
+<label for = "mail_content">E-Mail</label>
+
+<!--[WYSIWYG]-->
 
 <label for = "mail_lists">Send to</label>
 
@@ -25,6 +31,21 @@
     // choose either the full version
     $(".multiselect").multiselect();
 
+  });
+  
+  
+  $(document).ready(function(){
+  
+        $('#importTemplate').click(function(){
+        
+             
+             $.get('./ajax-return-template.php?template='+$('#mail_newsletter').val(), function(data) {  CKEDITOR.instances.mail_content.insertHtml(data); }); 
+        
+        
+        
+        
+        });
+  
   });
 </script>
 
