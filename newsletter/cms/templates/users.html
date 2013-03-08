@@ -1,0 +1,56 @@
+<h2>Subscribers</h2>
+
+<!--[FORM_ERRORS]-->
+
+<form name = "frmUsers" method = "post" action = "">
+
+    <label for = "subscribe_email">E-Mail</label>
+
+    <input type = "text" name = "subscribe_email" value = "" />
+    
+    <label for = "lists[]">Select Mailing List to add to</label>
+    
+    <!--[SELECT_LIST]-->
+    
+    <script type="text/javascript">
+  $(function(){
+    // choose either the full version
+    $(".multiselect").multiselect();
+
+  });
+</script>
+    
+    <input type = "hidden" name = "bAdd" value = "1" />
+        
+    <input type = "submit" name = "frmSubmit" value = "Add E-Mail Address" />
+
+
+</form>
+
+<hr />
+
+<label for = "filter">Filter</label>
+
+<!--[SELECT_FILTER]-->
+
+<script type = "text/javascript">
+
+    $('#filter').change(function(){
+          
+          location.href = './users.php?filter='+$('#filter').val();
+    
+    
+    }
+    
+    );
+
+
+
+
+</script>
+
+<hr />
+
+<!--[LIST_OF_USERS]-->
+<!--[PAGINATION]-->
+

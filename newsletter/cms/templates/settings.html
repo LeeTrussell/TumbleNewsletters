@@ -1,0 +1,56 @@
+<h2>Settings</h2>
+
+<!--[FORM_ERRORS]-->
+
+<form name = "frmSettings" action = "" method = "post">
+
+<h3>User Settings</h3>
+
+<label for = "user_username">Username</label>
+
+<input type = "text" name = "user_username" value = "<!--[USER_USERNAME]-->" />
+
+<label for = "user_password">Password</label>
+
+<input type = "password" name = "user_password" value = "" />
+
+<input type = "hidden" name = "bSettings" value = "1" />
+
+<input type = "submit" name = "bSubmit" value = "Update User Settings" />
+
+</form>
+
+
+<hr />
+
+<form name = "frmSMTPSettings" action = "" method = "post">
+
+<h3>SMTP Settings</h3>
+
+<label for = "smtp_host">Host</label>
+
+<input type = "text" name = "smtp_host" value = "<!--[SMTP_HOST]-->" />
+
+<label for = "smtp_port">Port</label>
+
+<input type = "text" name = "smtp_port" value = "<!--[SMTP_PORT]-->" />
+
+<label for = "smtp_username">SMTP Username</label>
+
+<input type = "text" name = "smtp_username" value = "<!--[SMTP_USERNAME]-->" />
+
+<label for = "smtp_password">SMTP Password</label>
+
+<input type = "password" name = "smtp_password" value = "<!--[SMTP_PASSWORD]-->" />
+
+<label for = "smtp_from">Mail From</label>
+
+<input type = "text" name = "smtp_from" value = "<!--[SMTP_FROM]-->" />  
+
+<input type = "hidden" name = "smtpsettings" value = "1" />
+
+<input type = "submit" name = "bSubmit" value = "Update SMTP settings" />
+
+</form>
+
+

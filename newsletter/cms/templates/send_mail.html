@@ -1,0 +1,39 @@
+<h2>Send Newsletters</h2>
+
+<!--[FORM_ERRORS]-->
+
+<form name = "frmSettings" action = "" method = "post">
+
+<label for = "mail_campaign">Mail Campaign Name (Also subject of E-Mails sent)</label>
+
+<input type = "text" name = "mail_campaign" value = "" />
+
+<label for = "mail_to_address">E-Mails to</label>
+
+<input type = "text" name = "mail_to_address" value = "" />
+
+<label for = "mail_newsletter">Newsletter</label>
+
+<!--[SELECT_BOX_NEWSLETTER]-->
+
+<label for = "mail_lists">Send to</label>
+
+<!--[SELECT_MAILING_LISTS]-->
+
+<script type="text/javascript">
+  $(function(){
+    // choose either the full version
+    $(".multiselect").multiselect();
+
+  });
+</script>
+
+<input type = "hidden" name = "bMail" value = "1" />
+
+<input type = "submit" name = "bSubmit" value = "Create Mailing Campaign" />
+
+</form>
+
+<hr />
+<!--[LIST_OF_CAMPAIGNS]-->
+<!--[PAGINATION]-->

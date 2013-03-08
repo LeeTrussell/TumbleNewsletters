@@ -1,0 +1,32 @@
+<h2>Editing List '<!--[LIST_NAME]-->'</h2>
+<!--[FORM_ERRORS]-->
+<form name = "frmEditList" action = "" method = "post">
+
+    <label for = "list_name">List Name</label>
+    <input type = "text" name = "list_name" value = "<!--[LIST_NAME]-->" />
+    
+    <label for = "list_description">Description</label>
+    <textarea name = "list_description"><!--[LIST_DESCRIPTION]--></textarea>
+    
+    <hr />
+    
+    
+    <label for = "subscribers[]">Users in mailing list</label>
+    <!--[SELECTED_EMAILS]-->
+    
+      
+      <script type="text/javascript">
+$(function(){
+  // choose either the full version
+  $(".multiselect").multiselect();
+
+});
+</script>
+
+    
+    <input type = "hidden" name = "bSubmit" value = "1" />
+    <input type = "hidden" name = "edit" value = "<!--[LIST_ID]-->" />
+    <input type = "submit" name = "frmSubmit" value = "Edit List" /> <a href = "./mailing_list.php" class = "link-button">Cancel</a>
+    
+</form>
+

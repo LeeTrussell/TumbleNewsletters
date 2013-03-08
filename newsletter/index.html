@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Subscribe</title>
+    <script src = "./scripts/jquery-1.8.3.min.js"></script>
+  </head>
+  <body>
+      <div id = "message"></div>
+      <form name = "frmSubscribe" id = "frmSubscribe" method = "post" action = "">
+          <input type = "text" name = "email" value = "" />
+          <input type = "hidden" name = "bSubmit" value = "1" />
+          <input type = "button" id = "frmSubmit" name = "frmButton" value = "Subscribe" />      
+      
+      
+      </form>    
+      <script type = "text/javascript">
+      
+         $(document).ready(function(){
+            
+            
+            $('#frmSubmit').click(function(){
+                 $.ajax({
+                        type: "POST",
+                        url: "./subscribe.php",
+                        data: $('#frmSubscribe').serialize(),
+                        success: function(response) {
+                           $('#message').html(response); 
+                        }
+                      });
+                
+            
+            });
+         
+         
+         
+         }
+         
+         
+         );
+      
+      
+      </script>
+
+
+  </body>
+</html>
